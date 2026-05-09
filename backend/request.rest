@@ -1,0 +1,26 @@
+//create user
+POST http://localhost:5000/users 
+Content-Type: application/json
+
+{
+    "name": "adam",
+    "email": "adam@gmail.com",
+    "password": "12345678",
+    "confPassword": "12345678",
+    "role": "user"
+}
+
+###
+//get all users
+GET http://localhost:5000/users
+
+
+###
+//Post product
+POST http://localhost:5000/product
+Content-Type: application/json
+
+{
+    "name": "tes6",
+    "price": "234"
+}
