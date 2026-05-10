@@ -20,14 +20,14 @@ Get http://localhost:5000/users/10ca793f-52ee-44a8-b60b-789eb83a418f
 
 ###
 //update user
-PATCH  http://localhost:5000/users/2f7a4015-b1fa-402b-b501-6445798fcf19
+PATCH  http://localhost:5000/users/5fb2d20b-915a-4a60-805f-2571811aa789
 Content-Type: application/json
 
 {
-    "name": "tes123 ",
-    "email": "tesss@gmail.com",
-    "password": "",
-    "confPassword": "",
+    "name": "adam ",
+    "email": "adam@gmail.com",
+    "password": "12345678",
+    "confPassword": "12345678",
     "role": "user"
 }
 
@@ -36,11 +36,44 @@ Content-Type: application/json
 DELETE http://localhost:5000/users/2f7a4015-b1fa-402b-b501-6445798fcf19
 
 ###
+//login admin
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "admin@gmail.com",
+    "password": "12345678"
+}
+
+###
+//login user
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "adam@gmail.com",
+    "password": "12345678"
+}
+
+###
+//get user by token
+GET http://localhost:5000/me
+
+###
+//logout user
+DELETE http://localhost:5000/logout
+
+
+###
 //Post product
 POST http://localhost:5000/product
 Content-Type: application/json
 
 {
-    "name": "tes6",
+    "name": "tes12",
     "price": "234"
 }
+
+###
+//Get all products
+GET http://localhost:5000/products
