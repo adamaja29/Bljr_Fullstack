@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 
-const Home = () => {
+const DashboardAdmin = () => {
     const navigate = useNavigate();
 
     return (
         <>
-            <h1>HOME</h1>
+            <h1>HOME ADMIN</h1>
 
             <button onClick={() => navigate('/admin/users')}>
                 Data
@@ -14,4 +14,4 @@ const Home = () => {
     );
 }
 
-export default Home;
+export default DashboardAdmin;
