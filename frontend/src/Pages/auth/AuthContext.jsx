@@ -2,9 +2,7 @@ import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext();
 
-// CUSTOM HOOK
 export const useAuth = () => {
-
     const context = useContext(AuthContext);
 
     if(!context){
@@ -12,42 +10,28 @@ export const useAuth = () => {
     }
 
     return context;
-
 }
 
-// PROVIDER
 export const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
-
-    // LOGIN
     const login = async (email, password) => {
-
         try {
-
             const response = await fetch("http://localhost:5000/login", {
-
                 method: "POST",
-
                 headers: {
                     "Content-Type": "application/json"
                 },
-
                 credentials: "include",
-
                 body: JSON.stringify({
                     email,
                     password
                 })
-
             });
 
             const userData = await response.json();
-
-            // LOGIN BERHASIL
             if(response.ok){
 
-                // 🔥 simpan user global
                 setUser(userData);
 
                 return {
@@ -65,7 +49,6 @@ export const AuthProvider = ({ children }) => {
             }
 
         } catch (error) {
-
             console.log("Login Error:", error);
 
             return {
@@ -74,20 +57,25 @@ export const AuthProvider = ({ children }) => {
             };
 
         }
-
     };
 
-    return (
+    const logout = async() => {
+        await fetch('http://localhost:5000/logout', {
+            method: 'DELETE',
+            credentials: 'include'
+        });
+        setUser(null);
+    }
 
+    return (
         <AuthContext.Provider value={{
             user,
-            login
+            login,
+            logout
         }}>
 
             {children}
 
         </AuthContext.Provider>
-
     );
-
 }

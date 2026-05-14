@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./Pages/auth/AuthContext";
 import Login from "./Pages/auth/Login";
-import DashboardAdmin from "./pages/admin/DashboardAdmin";
-import DashboardUser from "./pages/user/DashboardUser";
-import Users from "./pages/admin/Users";
+import DashboardAdmin from "./Pages/admin/DashboardAdmin";
+import DashboardUser from "./Pages/user/DashboardUser";
+import Users from "./Pages/admin/Users";
 
 function App() {
 
