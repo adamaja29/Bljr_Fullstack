@@ -1,16 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import ProtectedRoute from "./Components/ProtectRoute";
-
 import { AuthProvider } from "./Pages/auth/AuthContext";
-
 import Login from "./Pages/auth/Login";
-
 import DashboardAdmin from "./Pages/admin/DashboardAdmin";
-
 import DashboardUser from "./Pages/user/DashboardUser";
-
 import Users from "./Pages/admin/Users";
+import Products from "./Pages/admin/Products"
 
 function App() {
 
@@ -46,6 +41,13 @@ function App() {
 
               </ProtectedRoute>
             }
+          />
+
+          <Route path="/admin/products" element={
+            <ProtectedRoute allowedRole="admin">
+              <Products />
+            </ProtectedRoute>
+          }
           />
 
           {/* USER */}

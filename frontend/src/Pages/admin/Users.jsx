@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Users() {
+  const navigate = useNavigate();
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -9,12 +11,11 @@ function Users() {
 
   const getUsers = async () => {
     try {
-      const response = await fetch("http://localhost:5000/users", {
-        credentials: "include",
-      });
-
+      const response = await fetch(
+        "http://localhost:5000/users",
+        { credentials: "include", }
+      );
       const data = await response.json();
-
       setUsers(data);
     } catch (error) {
       console.log(error);
@@ -23,9 +24,13 @@ function Users() {
 
   return (
     <div>
+      <button onClick={() => navigate ("/admin/dashboard")}>
+        Kembali
+      </button>
+
       <h1>Data Users</h1>
 
-      <table border="1" cellPadding="10">
+      <table border = "1" cellPadding={10}>
         <thead>
           <tr>
             <th>No</th>

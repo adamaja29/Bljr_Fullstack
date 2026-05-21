@@ -22,6 +22,14 @@ const DashboardAdmin = () => {
             </button>
 
             <br />
+            <br />
+
+            <button onClick={() => navigate ('/admin/products')}>
+                Product
+            </button>
+
+            <br />
+            <br />
 
             <button onClick={handleLogout}>
                 Logout
