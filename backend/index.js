@@ -41,6 +41,7 @@ app.use(session({
 
 // store.sync();
 
+//Bisa Baca JSON
 app.use(express.json());
 
 app.use(UserRoute);

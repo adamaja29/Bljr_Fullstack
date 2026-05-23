@@ -14,7 +14,10 @@ const DashboardUser = () => {
         <>
             <h1>HOME USER</h1>
 
-            HAYYYY
+            <button onClick={() => navigate('/user/products')}>Products</button>
+
+            <br />
+            <br />
 
             <button onClick={handleLogout}>
                 Logout

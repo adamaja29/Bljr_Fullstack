@@ -9,21 +9,21 @@ const ProtectRoute = ({ children, allowedRole }) => {
 
     console.log(allowedRole);
 
-    // 🔥 tunggu fetch /me selesai
+    //tunggu fetch /me selesai
     if(loading){
 
         return <h1>Loading...</h1>
 
     }
 
-    // 🔥 belum login
+    //belum login
     if(!user){
 
         return <Navigate to="/" />
 
     }
 
-    // 🔥 role salah
+    //role salah
     if(user.role !== allowedRole){
 
         if(user.role === "user"){

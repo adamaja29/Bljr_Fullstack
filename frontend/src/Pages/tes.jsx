@@ -1,93 +1,51 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 
-const Products = () => {
+const AddProduct = () => {
 
-    const navigate = useNavigate();
+    const [name, setName] = useState("");
+    const [price, setPrice] = useState("");
 
-    const [products, setProducts] = useState([]);
-
-    useEffect(() => {
-
-        getProducts();
-
-    }, []);
-
-    const getProducts = async () => {
+    const saveProduct = async(e) => {
+        e.preventDefault();
 
         try {
 
-            const response = await fetch(
-                "http://localhost:5000/product",
-                {
-                    credentials: "include"
-                }
-            );
+            await axios.post("http://localhost:5000/product", {
+                name: name,
+                price: price
+            });
 
-            const data = await response.json();
-
-            setProducts(data);
+            alert("Product berhasil ditambah");
 
         } catch (error) {
-
             console.log(error);
-
         }
-
-    };
+    }
 
     return (
+        <form onSubmit={saveProduct}>
+            
+            <input
+                type="text"
+                placeholder="Nama Product"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+            />
 
-        <div>
+            <input
+                type="text"
+                placeholder="Harga"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+            />
 
-            <button
-                onClick={() => navigate("/admin/dashboard")}
-            >
-                Kembali
+            <button type="submit">
+                Simpan
             </button>
 
-            <h1>DATA PRODUCTS</h1>
-
-            <table border="1" cellPadding="10">
-
-                <thead>
-
-                    <tr>
-
-                        <th>No</th>
-
-                        <th>Nama Product</th>
-
-                        <th>Harga</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    {products.map((product, index) => (
-
-                        <tr key={product.id}>
-
-                            <td>{index + 1}</td>
-
-                            <td>{product.name}</td>
-
-                            <td>{product.price}</td>
-
-                        </tr>
-
-                    ))}
-
-                </tbody>
-
-            </table>
-
-        </div>
-
+        </form>
     );
-
 }
 
-export default Products;
+export default AddProduct;

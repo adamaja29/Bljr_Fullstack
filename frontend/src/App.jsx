@@ -5,7 +5,8 @@ import Login from "./Pages/auth/Login";
 import DashboardAdmin from "./Pages/admin/DashboardAdmin";
 import DashboardUser from "./Pages/user/DashboardUser";
 import Users from "./Pages/admin/Users";
-import Products from "./Pages/admin/Products"
+import AdminProducts from "./Pages/admin/Products"
+import UserProducts from "./Pages/user/Products"
 
 function App() {
 
@@ -45,7 +46,7 @@ function App() {
 
           <Route path="/admin/products" element={
             <ProtectedRoute allowedRole="admin">
-              <Products />
+              <AdminProducts />
             </ProtectedRoute>
           }
           />
@@ -61,6 +62,13 @@ function App() {
 
               </ProtectedRoute>
             }
+          />
+
+          <Route path="/user/products" element={
+            <ProtectedRoute allowedRole="user">
+              <UserProducts />
+            </ProtectedRoute>
+          }
           />
 
         </Routes>
