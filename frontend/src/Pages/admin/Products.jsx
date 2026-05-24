@@ -28,6 +28,10 @@ const Products = () => {
         <>
             <button onClick={() => navigate ("/admin/dashboard")}>
                 Kembali
+            </button> 
+
+            <button onClick={() => navigate ("/admin/addproduct")}>
+                Tambah
             </button>
 
             <h1>Data Products</h1>
@@ -39,6 +43,7 @@ const Products = () => {
                         <th>Nama</th>
                         <th>Harga</th>
                         <th>User</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
 
@@ -49,6 +54,7 @@ const Products = () => {
                         <td>{product.name}</td>
                         <td>{product.price}</td>
                         <td>{product.user.name}</td>
+                        <td>aksi</td>
                     </tr>
                     ))}
                 </tbody>

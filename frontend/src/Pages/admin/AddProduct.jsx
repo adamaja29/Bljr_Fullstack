@@ -26,7 +26,7 @@ const AddProduct = () => {
             );
 
             // pindah halaman setelah berhasil
-            navigate("/products");
+            navigate("/admin/products");
 
         } catch (error) {
             console.log(error);
@@ -34,6 +34,12 @@ const AddProduct = () => {
     }
 
     return (
+        <>
+        <button onClick={() => navigate("/admin/products")}>
+            Batal
+        </button>
+        <br />
+        <br />
         <form onSubmit={saveProduct}>
 
             <input
@@ -54,7 +60,8 @@ const AddProduct = () => {
                 Simpan
             </button>
 
-        </form>
+        </form></>
+        
     );
 }
 

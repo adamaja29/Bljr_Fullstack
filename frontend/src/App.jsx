@@ -5,8 +5,10 @@ import Login from "./Pages/auth/Login";
 import DashboardAdmin from "./Pages/admin/DashboardAdmin";
 import DashboardUser from "./Pages/user/DashboardUser";
 import Users from "./Pages/admin/Users";
-import AdminProducts from "./Pages/admin/Products"
-import UserProducts from "./Pages/user/Products"
+import AdminProducts from "./Pages/admin/Products";
+import AdminAddProduct from "./Pages/admin/AddProduct";
+import UserProducts from "./Pages/user/Products";
+import UserAddProduct from "./Pages/user/AddProduct"
 
 function App() {
 
@@ -51,6 +53,13 @@ function App() {
           }
           />
 
+          <Route path="/admin/addproduct" element={
+            <ProtectedRoute allowedRole="admin">
+              <AdminAddProduct />
+            </ProtectedRoute>
+          }
+          />
+
           {/* USER */}
 
           <Route
@@ -67,6 +76,13 @@ function App() {
           <Route path="/user/products" element={
             <ProtectedRoute allowedRole="user">
               <UserProducts />
+            </ProtectedRoute>
+          }
+          />
+
+          <Route path="/user/addproduct" element={
+            <ProtectedRoute allowedRole="user">
+              <UserAddProduct />
             </ProtectedRoute>
           }
           />
